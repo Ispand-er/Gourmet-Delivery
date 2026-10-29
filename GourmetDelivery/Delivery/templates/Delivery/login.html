@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Вход в систему</title>
+</head>
+<body class="form-page">
+    <div class="form-wrapper">
+        <h1>Вход в систему</h1>
+        <form id="login-form" action="{% url 'catalog' %}" method="GET">
+            <div class="form-group">
+                <label for="login-username">Логин</label>
+                <input type="text" id="login-username" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Пароль</label>
+                <div class="input-password-wrapper">
+                    <input type="password" id="login-password" class="form-control" required>
+                    <button type="button" class="btn-toggle-password" data-target="login-password">Показать</button>
+                </div>
+            </div>
+            <button type="submit" class="btn-submit">Войти</button>
+        </form>
+        <div class="form-redirect">
+            Нет аккаунта? <a href="{% url 'register' %}">Создать аккаунт</a>
+        </div>
+    </div>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>

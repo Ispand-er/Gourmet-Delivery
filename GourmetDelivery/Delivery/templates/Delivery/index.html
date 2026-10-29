@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="{% url 'index' %}" class="logo">Gourmet Delivery</a>
+            <nav class="nav">
+                <a href="{% url 'index' %}" class="nav-link active">Главная</a>
+                <a href="{% url 'catalog' %}" class="nav-link">Каталог</a>
+                <a href="{% url 'login' %}" class="nav-link">Вход</a>
+                <a href="{% url 'register' %}" class="nav-link">Регистрация</a>
+                <button class="btn-theme" id="theme-toggle">Сменить тему</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <section class="hero">
+
+            <h1>Блюда из лучших ресторанов с доставкой на дом</h1>
+            <p>Мы привозим горячую еду из ваших любимых заведений за 30 минут. Качество ресторанного уровня на вашей
+                кухне.</p>
+            <a href="{% url 'catalog' %}" class="btn-primary">Перейти в каталог</a>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <img class="imgc" src="../../static/assets/img/Delivery.webp" alt="">
+                <h3>Быстрая доставка</h3>
+                <p>Используем специальные термосумки, чтобы еда приезжала горячей.</p>
+            </div>
+            <div class="feature-card">
+                <img class="imgc" src="../../static/assets/img/Chef.jpg" alt="">
+                <h3>Лучшие шеф-повара</h3>
+                <p>Сотрудничаем только с заведениями, прошедшими строгий аудит качества.</p>
+            </div>
+            <div class="feature-card">
+                <img class="imgc" src="../../static/assets/img/Mix.webp" alt="">
+                <h3>Разнообразное меню</h3>
+                <p>От классических бургеров и пиццы до изысканных азиатских супов и десертов.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Навигация</h3>
+                <ul class="footer-links">
+                    <li><a href="{% url 'index' %}">Главная</a></li>
+                    <li><a href="{% url 'catalog' %}">Каталог меню</a></li>
+                    <li><a href="{% url 'login' %}">Вход</a></li>
+                    <li><a href="{% url 'register' %}">Регистрация</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Контакты</h3>
+                <p>Email: GourmetDelivery@mail.com</p>
+                <p>Телефон: +7(999)999-99-99</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 Gourmet Delivery. Все права защищены.
+        </div>
+    </footer>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+
+</html>

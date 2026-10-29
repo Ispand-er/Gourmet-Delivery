@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="{% url 'index' %}" class="logo">Gourmet Delivery</a>
+            <nav class="nav">
+                <a href="{% url 'index' %}" class="nav-link">Главная</a>
+                <a href="{% url 'catalog' %}" class="nav-link active">Каталог</a>
+                <a href="{% url 'login' %}" class="nav-link">Вход</a>
+                <a href="{% url 'register' %}" class="nav-link">Регистрация</a>
+                <button id="theme-toggle" class="btn-theme">Сменить тему</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-content container">
+        <h1 class="page-title">Наше меню</h1>
+
+        <div class="catalog-actions-wrapper">
+            <a href="{% url 'dish_create' %}" class="btn-primary">+ Добавить блюдо</a>
+        </div>
+
+        <div class="catalog-grid">
+            {% for dish in dishes %}
+            <div class="product-card">
+                {% if dish.image_name %}
+                <img src="{% static 'assets/img/' %}{{ dish.image_name }}" alt="{{ dish.title }}" class="img">
+                {% else %}
+                <img src="{% static 'assets/img/Delivery.webp' %}" alt="Placeholder" class="img">
+                {% endif %}
+                <div class="product-info">
+                    <h3>{{ dish.title }}</h3>
+                    <div class="restaurant-name">Ресторан «{{ dish.restaurant.name }}»</div>
+                    <p class="product-desc">{{ dish.description }}</p>
+                    <div class="product-footer">
+                        <span class="price">{{ dish.price }} ₽</span>
+                        <a href="{% url 'dish_detail' dish.id %}" class="btn-buy">Управление</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>Блюд пока нет в базе данных. Вы можете добавить первое блюдо через панель управления.</p>
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-column">
+                <h3>Навигация</h3>
+                <ul class="footer-links">
+                    <li><a href="{% url 'index' %}">Главная</a></li>
+                    <li><a href="{% url 'catalog' %}">Каталог меню</a></li>
+                    <li><a href="{% url 'login' %}">Вход</a></li>
+                    <li><a href="{% url 'register' %}">Регистрация</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Контакты</h3>
+                <p>Email: GourmetDelivery@mail.com</p>
+                <p>Телефон: +7(999)999-99-99</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Gourmet Delivery. Все права защищены.
+        </div>
+    </footer>
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+
+</html>
